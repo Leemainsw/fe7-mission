@@ -32,11 +32,15 @@ body {
   border-radius: 50%;
 
   /* 이곳을 채워주세요. hint) animation */
+  /* loading 클래스가 붙어 있을 때 로딩 스피너가 360도 돌아갑니다. */
+  animation: spinner 1s linear infinite;
 }
 
 .btn.loading {
   /* 이곳을 채워주세요. hint) transform */
-
+  /* 해당 버튼을 클릭할 때 눌리는 듯한 효과가 보입니다. */
+  transform: translateY(12px);
+  transition: transform 0.7s ease-in-out forwards;
   box-shadow: 0 4px 0 #a8df8e, 0 4px 4px;
 }
 
@@ -50,4 +54,11 @@ body {
 
 @keyframes spinner {
   /* 이곳을 채워주세요. hint) tranform 360도 돌아가게 */
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
