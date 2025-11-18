@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">
+        <span class="text">WELCOME!</span>
+        <span class="loader"></span>
+    </button>
+
+    <script>
+        const btn = document.querySelector('.btn');
+        // 1. btn 클래스명을 가지고 있는 버튼을 클릭했을 때 loading 이라는 클래스명이 붙습니다.
+        // 3초 뒤에 loading 이라는 클래스명이 사라집니다.
+        btn.addEventListener('click', () => {
+            btn.classList.add('loading');
+            setTimeout(() => {
+                btn.classList.remove('loading');
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
