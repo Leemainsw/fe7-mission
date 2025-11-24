@@ -1,4 +1,6 @@
+import { save } from '../../utils/localStorage.js';
 import { isShowTodayModal, getTodayRecommendedProduct } from './service.js';
+import { getDateFormatted } from '../../utils/date.js';
 
 /**
  * @description 오늘의 추천 상품 보여주는 modal template 생성 함수
@@ -47,7 +49,7 @@ const closeModal = (isCloseToday) => {
     dialog.remove();
     
     if(isCloseToday) {
-        save('showTodayModal', [{ date: getDateFormatted(new Date()), isShown: true }]);
+        save('showTodayModal', { date: getDateFormatted(new Date()), isShown: true });
     }
 }
 
