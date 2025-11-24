@@ -14,11 +14,41 @@ const createModalTemplate = (todayRecommendedProduct) => {
             <span>${todayRecommendedProduct.productPrice.toLocaleString()}원</span>
             <button id='recommendedAddCartButton'>장바구니</button>
             <div class='modal-buttons'>
-                <button id='dialogCloseButton'>닫기</button>
-                <button id='dialogHideButton'>오늘 하루 보지 않기</button>
+                <button id='dialogCloseButton' onclick='closeModal(false)'>닫기</button>
+                <button id='dialogHideButton' onclick='closeModal(true)'>오늘 하루 보지 않기</button>
             </div>
         </div>
     `;
+}
+
+/**
+ * @description 모달 버튼 이벤트를 초기화합니다.
+ */
+const initializeModalButtonEvent = () => {
+    const dialogCloseButton = document.getElementById('dialogCloseButton');
+    const dialogHideButton = document.getElementById('dialogHideButton');
+
+    dialogCloseButton.addEventListener('click', () => {
+        closeModal(false);
+    });
+
+    dialogHideButton.addEventListener('click', () => {
+        closeModal(true);
+    });
+}
+
+/**
+ * @description 모달을 닫고, 모달 데이터를 저장합니다.
+ * @param {boolean} isCloseToday
+ */
+const closeModal = (isCloseToday) => {
+    const dialog = document.querySelector('.modal');
+    dialog.close();
+    dialog.remove();
+    
+    if(isCloseToday) {
+        save('showTodayModal', [{ date: getDateFormatted(new Date()), isShown: true }]);
+    }
 }
 
 /** 
@@ -46,6 +76,7 @@ const renderTodayRecommendModal = async () => {
     dialog.innerHTML = createModalTemplate(todayRecommendedProduct)
 
     document.body.appendChild(dialog);
+    initializeModalButtonEvent();
 }
 
 
