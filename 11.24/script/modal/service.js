@@ -13,7 +13,7 @@ const isShowTodayModal = () => {
 
     // 데이터가 없으면 보여줘야 함
     if(!showTodayModal) {
-        save('showTodayModal', [{ date: getDateFormatted(new Date()), isShown: false }]);
+        save('showTodayModal', { date: getDateFormatted(new Date()), isShown: false });
         return true;
     }
 
