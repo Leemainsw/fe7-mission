@@ -12,7 +12,7 @@ function save(key, value) {
  * @param {string} key 
  * @returns {string}
  */
-export function get(key) {
+function get(key) {
     return JSON.parse(localStorage.getItem(key));
 }
 
@@ -20,14 +20,14 @@ export function get(key) {
  * @description 로컬 스토리지에서 데이터를 삭제합니다.
  * @param {string} key 
  */
-export function remove(key) {
+function remove(key) {
     localStorage.removeItem(key);
 }
 
 /**
  * @description 로컬 스토리지에서 모든 데이터를 삭제합니다.
  */
-export function removeAll() {
+function removeAll() {
     localStorage.clear();
 }
 
