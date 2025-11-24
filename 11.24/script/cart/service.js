@@ -6,11 +6,21 @@ import {getProduct} from '../data.js';
  * @returns {void}
  */
 const initCart = () => {
-    const result = confirm('장바구니를 초기화하시겠습니까?');
+    const result = confirm(`장바구니를 초기화하시겠습니까?\n${getAllCartItemListForTemplate()}`);
     if(!result) return;
 
     save('cart', JSON.stringify([]));
     alert('장바구니가 초기화되었습니다.');
+}
+
+/**
+ * @description 장바구니 아이템 리스트를 템플릿에 맞게 반환합니다.
+ * @param {*} product 
+ * @returns 
+ */
+const getAllCartItemListForTemplate = () => {
+const cartList = getCartList();
+  return cartList.map((item) => `${item.productName} - ${item.quantity}개`).join('\n');
 }
 
 
@@ -38,7 +48,7 @@ const addCartItem = async (id) => {
   const cartList = getCartList();
   const newCartList = [...cartList];
   const findIndex = cartList.findIndex((item) => item.id === Number(id));
-
+  const newCart = newCartList[findIndex]
 
   const quantity = confirmItemQuantity(product);
   if(!quantity)  {
@@ -49,11 +59,12 @@ const addCartItem = async (id) => {
   if(!hasCartItem(product)) {
     newCartList.push({...product, quantity});
   } else {
-    newCartList[findIndex].quantity += quantity;
+    newCart.quantity += quantity;
   }
 
   save('cart', JSON.stringify(newCartList));
-  alert(`${product.productName}이 장바구니에 추가되었습니다.\n총 ${newCartList[findIndex].quantity}개 있습니다.`);
+  
+  alert(`${product.productName}이 장바구니에 추가되었습니다.\n총 ${newCart ? newCart.quantity :  quantity}개 있습니다.`);
 }
 
 /**
@@ -62,7 +73,7 @@ const addCartItem = async (id) => {
  * @returns {number | false}
  */
 const confirmItemQuantity = (product) => {
-    const count = prompt(`${product.name} 몇 개를 추가할까요?`, '1');
+    const count = prompt(`${product.productName} 몇 개를 추가할까요?`, '1');
     if(count === null) return false;
     return Number(count);
   
