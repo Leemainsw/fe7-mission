@@ -3,7 +3,7 @@
  * @returns {Promise<Array>}
  */
 const getProducts = async () => {
-    const response = await fetch('./11.24/mock.json');
+    const response = await fetch('../mock.json');
     return response.json();
 }
 
