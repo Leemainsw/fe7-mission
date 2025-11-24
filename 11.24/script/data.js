@@ -7,4 +7,9 @@ const getProducts = async () => {
     return response.json();
 }
 
-export { getProducts }
+const getProduct = async (id) => {
+    const products = await getProducts();
+    return products.find((product) => product.id === Number(id));
+}
+
+export { getProducts, getProduct }
