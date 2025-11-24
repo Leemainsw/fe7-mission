@@ -14,8 +14,8 @@ const createModalTemplate = (todayRecommendedProduct) => {
             <span>${todayRecommendedProduct.productPrice.toLocaleString()}원</span>
             <button id='recommendedAddCartButton'>장바구니</button>
             <div class='modal-buttons'>
-                <button id='dialogCloseButton' onclick='closeModal(false)'>닫기</button>
-                <button id='dialogHideButton' onclick='closeModal(true)'>오늘 하루 보지 않기</button>
+                <button id='dialogCloseButton' >닫기</button>
+                <button id='dialogHideButton' >오늘 하루 보지 않기</button>
             </div>
         </div>
     `;
