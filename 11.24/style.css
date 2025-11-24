@@ -22,6 +22,7 @@ main {
 
 .modal {
   position: fixed;
+  top: 0px;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -41,9 +42,21 @@ main {
   justify-content: center;
 }
 
+.modal > .modalInner > img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
 .modal > .modalInner > span {
   font-size: 18px;
   font-weight: 700;
+}
+
+#recommendedAddCartButton {
+  margin: 12px 0px;
 }
 
 .modal > .modalInner > button {

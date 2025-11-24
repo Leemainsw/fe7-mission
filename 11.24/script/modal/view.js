@@ -9,6 +9,7 @@ const createModalTemplate = (todayRecommendedProduct) => {
     return `
         <div class="modalInner">
             <h1>오늘의 추천 상품</h1>
+            <span>${todayRecommendedProduct.productName}</span>
             <img src='./imgs/${todayRecommendedProduct.productImgFileName}' alt='${todayRecommendedProduct.productName}' />
             <span>${todayRecommendedProduct.productPrice.toLocaleString()}원</span>
             <button id='recommendedAddCartButton'>장바구니</button>
