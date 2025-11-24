@@ -1,4 +1,4 @@
-import { get } from '../../utils/localStorage.js';
+import { get, save } from '../../utils/localStorage.js';
 import { getDateFormatted } from '../../utils/date.js';
 import { getProducts } from '../data.js';
 
